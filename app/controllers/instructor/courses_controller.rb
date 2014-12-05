@@ -13,12 +13,16 @@ class Instructor::CoursesController < ApplicationController
     else
       render :new, :status => :unprocessable_entity
     end
+    @course.images.create(course_params)
   end
 
   def show
   end
 
   private
+
+
+
   def require_authorized_for_current_course
     if current_course.user != current_user
       render :text => "Unauthorized", :status => :unauthorized
@@ -32,5 +36,6 @@ class Instructor::CoursesController < ApplicationController
 
   def course_params
     params.require(:course).permit(:title, :description, :cost)
+    params.require(:image).permit(:course)
   end
 end

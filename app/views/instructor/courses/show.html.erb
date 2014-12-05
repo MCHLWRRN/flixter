@@ -26,4 +26,10 @@
       </li>
     <% end %>
   </ul>
+
+
   
+<%= simple_form_for @image, :url => 'instructor_course_images_path(@course)' do |f| %>
+          <%= f.input :course %>>
+              <%= f.submit "Add a Photo", :class => 'btn btn-primary' %>
+          <% end %>
